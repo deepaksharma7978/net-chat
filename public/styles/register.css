@@ -1,0 +1,52 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.tabs-container {
+    width: 45vw;
+    background-color: var(--card-background);
+    border-radius: 12px;
+}
+
+.tab-btns {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 7px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.tab-active {
+    background-color: var(--primary-color);
+}
+
+.login-cards {
+    margin-top: 10px;
+}
+
+.form-container {
+    
+}
+
+#login-form {
+
+}
+
+#register-form {
+
+}
+
+@media (max-width: 670px) {
+    .tabs-container {
+        width: 60vw;
+    }
+}

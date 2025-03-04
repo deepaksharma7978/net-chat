@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Primary Colors */
+    --primary-color: #4A90E2; /* Vibrant Blue */
+    --secondary-color: #50E3C2; /* Soft Teal */
+
+    /* Background Colors */
+    --background-color: #FFFFFF; /* Pure White */
+    --card-background: #F7F9FC; /* Light Grayish Blue */
+    --input-background: #F1F3F5; /* Subtle Gray */
+
+    /* Text Colors */
+    --text-primary: #333333; /* Dark Gray */
+    --text-secondary: #666666; /* Muted Gray */
+
+    /* Chat Bubble Colors */
+    --chat-bubble-sender: #E8F1FD; /* Soft Blue */
+    --chat-bubble-receiver: #DCF8C6; /* Light Green */
+
+    /* Border & Effects */
+    --border-color: #E0E0E0; /* Light Gray */
+    --hover-effect: #E3F2FD; /* Very Light Blue */
+    --notification-badge: #FF5C5C; /* Bright Red */
+
+    /* Misc */
+    --box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+  
+
+body {
+    font-family: "Poppins", sans-serif;
+}

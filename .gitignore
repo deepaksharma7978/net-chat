@@ -1,0 +1,55 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore vendor dependencies (if using Composer)
+vendor/
+composer.lock
+
+# Ignore environment configuration
+.env
+.env.local
+.env.*.local
+
+# Ignore logs and debug files
+*.log
+logs/
+debug.log
+
+# Ignore cache and temporary files
+cache/
+tmp/
+*.cache
+*.temp
+*.swp
+
+# Ignore IDE and editor files
+*.vscode/
+*.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore uploads (optional)
+uploads/
+public/uploads/
+storage/uploads/
+
+# Ignore session and cache files
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# Ignore database files (if using SQLite)
+database/*.sqlite
+database/*.sqlite3
+
+# Ignore PHPUnit test results
+phpunit.xml
+phpunit.xml.dist
+coverage/
+
+# Ignore built assets (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+cert
