@@ -6,15 +6,15 @@
 }
 
 .tabs-container {
-    width: 45vw;
+    width: 30vw;
     background-color: var(--card-background);
     border-radius: 12px;
 }
 
 .tab-btns {
-    width: 100%;
     display: flex;
     gap: 10px;
+    padding: 10px;
 }
 
 .tab {
@@ -23,6 +23,7 @@
     padding: 7px;
     width: 100%;
     cursor: pointer;
+    text-align: center;
 }
 
 .tab-active {
@@ -34,7 +35,14 @@
 }
 
 .form-container {
-    
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-container > h3 {
+    text-align: center;
 }
 
 #login-form {
@@ -43,6 +51,16 @@
 
 #register-form {
 
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.forgot-password-link {
+    text-align: center;
+    font-size: 14px;
 }
 
 @media (max-width: 670px) {

@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once __DIR__ . '/../src/db.php';
+require_once __DIR__ . '/../src/routes/api.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Net Chat</title>
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/global.css">
-</head>
+$db = connect_sql_db();
+$user = null;
 
-<body>
-    <?php
-    require_once __DIR__ . '/../src/db.php';
-    $db = connect_sql_db();
-    $user = $_COOKIE['user'];
-
-    if ($user == NULL) {
-        header('Location: register.php');
-    }
-    ?>
-</body>
-
-</html>
+if (isset($_COOKIE['user'])) {
+    $GLOBALS['user'] = $_COOKIE['user'];
+    header('Location: /chat.php');
+    exit();
+} else {
+    header('Location: /register.php');
+    exit();
+}
+?>

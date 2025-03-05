@@ -37,3 +37,24 @@
 body {
     font-family: "Poppins", sans-serif;
 }
+
+p {
+    color: var(--text-primary);
+}
+
+input {
+    outline: none;
+    border-radius: 9px;
+    border: none;
+    padding: 10px;
+    background-color: var(--input-background);
+}
+
+button {
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    padding: 10px 15px;
+    color: var(--text-primary);
+    font-size: 16px;
+}
