@@ -17,7 +17,7 @@ class UserController
             }
 
             http_response_code(201);
-            echo json_encode(["status" => "success", "data" => ["fullname" => $data['fullname'], "email" => $data['email']]]);
+            echo json_encode(["status" => "success", "message" => "Account create please login"]);
             exit();
         } else {
             http_response_code(400);
