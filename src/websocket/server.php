@@ -48,6 +48,7 @@ class ChatServer implements MessageComponentInterface
                 $this->sendMessage($from->resourceId, $data['userId'], $data['receiverId'], $data['message']);
                 break;
             case "send-club-message":
+                $this->sendGroupMessage($data['senderId'], $data['clubId'], $data['message']);
                 break;
             default:
                 echo "Unknown event: {$data['event']}\n";
@@ -65,7 +66,8 @@ class ChatServer implements MessageComponentInterface
         $conn->close();
     }
 
-    private function sendMessage($senderId, $userId, $receiverId, $message) {
+    private function sendMessage($senderId, $userId, $receiverId, $message)
+    {
         // when user is online
         if (isset($this->users[$receiverId])) {
             $receiver = $this->users[$receiverId];
@@ -84,8 +86,51 @@ class ChatServer implements MessageComponentInterface
         $save_chat_query->execute([$userId, $receiverId, $message]);
     }
 
-    private function sendGroupMessage($senderId, $groupId, $message) {
+    private function sendGroupMessage($senderId, $clubId, $message)
+    {
+        $sender = $this->users[$senderId];
 
+        $get_club_query = $this->pdo->prepare("SELECT * FROM CLUBS WHERE club_id = :club_id");
+        $get_club_query->execute(["club_id" => $clubId]);
+        $club = $get_club_query->fetch(PDO::FETCH_ASSOC);
+
+        if (!isset($club['club_id'])) {
+            $sender->send(json_encode([
+                "event" => "club-not-found",
+            ]));
+            return;
+        }
+
+        $members = json_decode($club['members']);
+
+        // send messages to members
+        foreach ($members as $member) {
+            if (isset($this->users[$member]) && $member != $senderId) {
+                $receiver = $this->users[$member];
+
+                $receiver->send(json_encode([
+                    "event" => "receive-club-message",
+                    "sender_id" => $senderId,
+                    "club_id" => $clubId,
+                    "message" => $message,
+                ]));
+            }
+        }
+
+        // send message to admin as well
+        if (isset($this->users[$club['admin_id']]) && $member != $senderId) {
+            $admin = $this->users[$club['admin_id']];
+            $admin->send(json_encode([
+                "event" => "receive-club-message",
+                "sender_id" => $senderId,
+                "club_id" => $clubId,
+                "message" => $message,
+            ]));
+        }
+
+        // save chats
+        $save_chat_query = $this->pdo->prepare("INSERT INTO CLUB_CHATS (club_id, sender_id, message) VALUES (?, ?, ?)");
+        $save_chat_query->execute([$clubId, $senderId, $message]);
     }
 }
 
