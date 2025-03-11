@@ -58,24 +58,110 @@ nav{
     cursor: pointer;
 }
 
-.Chat-history-container{
+.chat-page-container{
     display: flex; 
-    background-color: black;
-    gap: 3px;
-    padding: 10px;
+    height: 90vh;
+}
+
+.chat-profiles {
+    display: flex;
+    flex-basis: 25vw;
+    flex-direction: column;
+    gap: 1px;
+    border-right: 1px black solid;
+    overflow-y: auto;
+}
+
+.chat-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    border-radius: 12px;
     border: 2px solid black;
-    height: 667px;
 }
 
-.chat-history{
-    flex: 1;
+.chat-profile > p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.chats-container {
+    flex-basis: 75vw;
+    height: calc(100vh-60px);
+    display: flex;
+    flex-direction: column;
+}
+
+.Header{
+    display: flex;
+    align-items: center;
+    background: var(--secondary-color);
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 2px solid black;
+}
+
+.Profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Profile>img:hover{
+    cursor: pointer;
+}
+
+.Add{
+    display: flex;
+    justify-content: right;
+}
+
+.chat-box{
+    background-color: black;
+    height: 76vh;
+}
+/* 
+.sender>p{
+    color: red;
+}
+
+.sender-site{
+    display: flex;
+    justify-content: flex-end;
     position: relative;
-    background-color:red;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+}
+/* .receiver>p
+{
+    color: white;
+    text-align: center;
+} 
+
+.sender{
+    padding: 15px;
+    background-color: green;
+    font-weight: bolder;
+    margin-right: 10px;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.receiver{
+    text-align: left;
     padding: 10px;
-}
-
-.chat-view{
-    flex: 2;
-    position: relative;
-    background-color: aqua;
-}
+    background-color: green;
+    font-weight: bolder;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 1000px;
+}  */

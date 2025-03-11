@@ -24,14 +24,55 @@ $baseUrl = '/assets/';
         </div>
     </nav>
 
-    <div class="Chat-history-container">
-        <div class="chat-history">
-            <div class="User">Prabhat
+    <div class="chat-page-container">
+        <div class="chat-profiles">
+            <div class="chat-profile">
+                <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
+                <p>Username</p>
+            </div>
+            <div class="chat-profile">
+                <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
+                <p>Username</p>
             </div>
         </div>
-        <div class="chat-view"></div>
+        <div class="chats-container">
+            <div class="Header">
+                <div class="Profile">
+                    <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
+                    <p> Username</p>
+                </div>
+                <div class="Add">
+                    <button type="button">Add Friend</button>
+                </div>
+            </div>
+            <div class="chat-box">
+                <div class="message">
+                    <!-- <div class="sender-site">
+                            <div class="options">
+                                <label for="options"></label>
+                                    <select name="options" id="options">
+                                    <option value="">👍</option>
+                                    <option value="">😂</option>
+                                    <option value="">😊</option>
+                                    <option value="">🤗</option>
+                                </select>
+                                <div class="sender">
+                                    <p>Hi</p>
+                                </div>
+                            </div>
+                                <div class="receiver">
+                                    <p>Hello</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text">
+                
+            </div>
+        </div>
     </div>
-
     <script src="./scripts/chat.js"></script>
 </body>
 </html>
