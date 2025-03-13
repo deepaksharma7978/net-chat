@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body {
+    height: 100vh;
+}
+
 nav{
     display: flex;
     align-items: center;
@@ -30,6 +34,13 @@ nav{
 }
 .right{
     text-align: right;
+}
+
+.emoji-picker {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 .search-input{
@@ -60,12 +71,13 @@ nav{
 
 .chat-page-container{
     display: flex; 
-    height: 90vh;
+    height: calc(100vh - 60px);
 }
 
 .chat-profiles {
     display: flex;
     flex-basis: 25vw;
+    height: 100%;
     flex-direction: column;
     gap: 1px;
     border-right: 1px black solid;
@@ -78,7 +90,12 @@ nav{
     gap: 10px;
     padding: 10px 15px;
     border-radius: 12px;
-    border: 2px solid black;
+    background-color: var(--card-background);
+    margin: 7px;
+}
+
+.chat-profile:hover {
+    background-color: var(--hover-effect);
 }
 
 .chat-profile > p {
@@ -88,7 +105,8 @@ nav{
 
 .chats-container {
     flex-basis: 75vw;
-    height: calc(100vh-60px);
+    height: calc(100vh - 60px);
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -96,7 +114,7 @@ nav{
 .Header{
     display: flex;
     align-items: center;
-    background: var(--secondary-color);
+    background-color: #00246B;
     justify-content: space-between;
     padding: 10px 20px;
     border-bottom: 2px solid black;
@@ -106,6 +124,12 @@ nav{
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.Profile>p{
+    color: #CADCFC;
+    font-weight: 500;
+    font-size: large;
 }
 
 .Profile>img:hover{
@@ -118,9 +142,58 @@ nav{
 }
 
 .chat-box{
-    background-color: black;
-    height: 76vh;
+    background-color: #CADCFC;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
 }
+
+.message-sent {
+    display: flex;
+    margin: 10px;
+    margin-left: auto;
+    max-width: 75%;
+    background-color: var(--chat-bubble-sender);
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.message-receive {
+    display: flex;
+    margin: 10px;
+    margin-right: auto;
+    max-width: 75%;
+    background-color: var(--chat-bubble-receiver);
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.text-message{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 75vw;
+    gap: 10px;
+    margin: 10px 10px;
+}
+
+.input-field{
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    width: 500px;
+}
+
+.submit-button{
+    cursor: pointer;
+}
+
+.submit-button:hover{
+    background-color: brown;
+}
+
 /* 
 .sender>p{
     color: red;

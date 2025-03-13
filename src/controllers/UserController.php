@@ -59,4 +59,24 @@ class UserController
             exit();
         }
     }
+
+    public static function searchUser() {
+        $query_string = $_SERVER['QUERY_STRING']; // Get raw query string
+        parse_str($query_string, $query_params); // Convert to associative array
+
+        // Access query parameters
+        $query = $query_params['query'] ?? null;
+
+        if ($query != null) {
+            $users = User::search_user($query);
+
+            http_response_code(200);
+            echo json_encode(["status" => "success", "data" => $users]);
+            exit();
+        } else {
+            http_response_code(400);
+            echo json_encode(["status" => "error", "message" => "Invalid data"]);
+            exit();
+        }
+    }
 }

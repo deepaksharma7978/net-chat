@@ -9,6 +9,8 @@ header("Content-Type: application/json");
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: *');
 
+// localhost:8000/api/user/login
+
 Router::post('/api/user/login', function () {
     UserController::loginUser();
 });
@@ -19,6 +21,10 @@ Router::post('/api/user/register', function () {
 
 Router::put('/api/user/delete', function () {
     UserController::deleteUser();
+});
+
+Router::get('/api/user/search', function() {
+    UserController::searchUser();
 });
 
 Router::get('/api/chats', function () {

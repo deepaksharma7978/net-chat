@@ -46,8 +46,10 @@ $baseUrl = '/assets/';
                 </div>
             </div>
             <div class="chat-box">
-                <div class="message">
-                    <!-- <div class="sender-site">
+                <div class="message-sent">hii</div>
+                <div class="message-receive">hru</div>
+                <!-- <div class="message">
+                    <div class="sender-site">
                             <div class="options">
                                 <label for="options"></label>
                                     <select name="options" id="options">
@@ -63,16 +65,20 @@ $baseUrl = '/assets/';
                                 <div class="receiver">
                                     <p>Hello</p>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <div class="text">
-                
+            <div class="text-message">
+                <emoji-picker id="emoji-picker" class="emoji-picker"></emoji-picker>
+                <button id="emoji-picker-btn"></button>
+                <input type="text" placeholder="Enter text..." class="input-field" >
+                <button class="submit-button">Send</button>
             </div>
         </div>
     </div>
     <script src="./scripts/chat.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 </body>
 </html>
