@@ -74,6 +74,13 @@ nav{
     height: calc(100vh - 60px);
 }
 
+#nochat-page {
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
 .chat-profiles {
     display: flex;
     flex-basis: 25vw;
@@ -103,11 +110,20 @@ nav{
     font-weight: bold;
 }
 
-.chats-container {
+#nochats-container {
     flex-basis: 75vw;
     height: calc(100vh - 60px);
     height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chats-container {
+    flex-basis: 75vw;
+    height: calc(100vh - 60px);
+    height: 100%;
+    display: none;
     flex-direction: column;
 }
 

@@ -24,51 +24,33 @@ $baseUrl = '/assets/';
         </div>
     </nav>
 
-    <div class="chat-page-container">
-        <div class="chat-profiles">
-            <div class="chat-profile">
-                <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
-                <p>Username</p>
-            </div>
-            <div class="chat-profile">
-                <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
-                <p>Username</p>
-            </div>
+    <!-- displayed when user have not started chatting with anyone -->
+    <div id="nochat-page">
+        <p>Start chatting by searching a user</p>
+    </div>
+
+    <div id="chat-container" class="chat-page-container">
+        <div id="profiles-container" class="chat-profiles">
+            <!-- Profiles will be displayed here dynamically -->
         </div>
-        <div class="chats-container">
+
+        <!-- display when chat not selected -->
+        <div id="nochats-container">
+            <p>Select a chat</p>
+        </div>
+
+        <div id="chats-container">
             <div class="Header">
                 <div class="Profile">
                     <img src="./assets/profile.png" alt="User Profile" height="40px" width="40px">
-                    <p> Username</p>
+                    <p id="chat-username">Username</p>
                 </div>
                 <div class="Add">
                     <button type="button">Add Friend</button>
                 </div>
             </div>
-            <div class="chat-box">
-                <div class="message-sent">hii</div>
-                <div class="message-receive">hru</div>
-                <!-- <div class="message">
-                    <div class="sender-site">
-                            <div class="options">
-                                <label for="options"></label>
-                                    <select name="options" id="options">
-                                    <option value="">👍</option>
-                                    <option value="">😂</option>
-                                    <option value="">😊</option>
-                                    <option value="">🤗</option>
-                                </select>
-                                <div class="sender">
-                                    <p>Hi</p>
-                                </div>
-                            </div>
-                                <div class="receiver">
-                                    <p>Hello</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+            <div id="chat-box" class="chat-box">
+                <!-- dynamically load chats here -->
             </div>
             <div class="text-message">
                 <emoji-picker id="emoji-picker" class="emoji-picker"></emoji-picker>
