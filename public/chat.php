@@ -14,7 +14,7 @@ $baseUrl = '/assets/';
 <body>
     <nav>
         <div class="left">
-            <img src="./assets/logo.png" alt="Net-chat Logo">
+            <img src="./assets/logo-back.jpg" alt="Net-chat Logo">
         </div>
          <div class="center">
             <input type="search" class="search-input" placeholder="Search....">
