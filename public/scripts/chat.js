@@ -1,6 +1,8 @@
 const userObj = JSON.parse(localStorage.getItem("user"));
 const url = `http://${window.location.host}`;
 
+let currentChatPartnerId = -1;
+
 // redirect to register page when user not logged in
 if (!userObj) {
     window.location.href = "/register.php";
@@ -48,6 +50,8 @@ async function getMyChats() {
 }
 
 async function selectChat(user_id, fullname, email) {
+    currentChatPartnerId = user_id;
+
     const nochat = document.getElementById("nochats-container");
     const chat = document.getElementById("chats-container");
 
@@ -71,13 +75,13 @@ async function selectChat(user_id, fullname, email) {
 
         chats.forEach(chat => {
             if (chat['sender_id'] === userObj['id']) {
-                chatBox.innerHTML += `
-                    <div id="message-sent" class="message-sent">${chat['message']}</div>
-                `;
+                chatBox.insertAdjacentHTML("beforeend", `
+                    <div class="message-sent">${chat['message']}</div>
+                `);
             } else {
-                chatBox.innerHTML += `
-                    <div id="message-receive" class="message-receive">${chat['message']}</div>
-                `;
+                chatBox.insertAdjacentHTML("beforeend", `
+                    <div class="message-receive">${chat['message']}</div>
+                `);
             }
         });
     }
