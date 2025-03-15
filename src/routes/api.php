@@ -31,6 +31,10 @@ Router::get('/api/chats', function () {
     ChatsController::get_chats();
 });
 
+Router::get('/api/my-chats', function () {
+    ChatsController::get_my_chats();
+});
+
 Router::post('/api/clubs/create', function () {
     ClubsController::create_club();
 });
