@@ -14,7 +14,7 @@ $baseUrl = '/assets/';
 <body>
     <nav>
         <div class="left">
-            <img src="./assets/logo.png" alt="Net-chat Logo">
+            <img src="./assets/logo-back.jpg" alt="Net-chat Logo">
         </div>
          <div class="center">
             <input type="search" class="search-input" placeholder="Search....">
@@ -45,14 +45,14 @@ $baseUrl = '/assets/';
                     <button type="button">Add Friend</button>
                 </div>
             </div>
-            <div class="chat-box">
-                <div class="message-sent">hii</div>
-                <div class="message-receive">hru</div>
-                <!-- <div class="message">
-                    <div class="sender-site">
+                <div class="chat-box">
+                    <div class="message-sent">hii</div>
+                    <div class="message-receive">hru</div>
+                    <!-- <div class="message">
+                        <div class="sender-site">
                             <div class="options">
                                 <label for="options"></label>
-                                    <select name="options" id="options">
+                                <select name="options" id="options">
                                     <option value="">👍</option>
                                     <option value="">😂</option>
                                     <option value="">😊</option>
@@ -62,14 +62,14 @@ $baseUrl = '/assets/';
                                     <p>Hi</p>
                                 </div>
                             </div>
-                                <div class="receiver">
-                                    <p>Hello</p>
-                                </div>
+                            <div class="receiver">
+                                <p>Hello</p>
                             </div>
                         </div>
                     </div>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
+        </div>
             <div class="text-message">
                 <emoji-picker id="emoji-picker" class="emoji-picker"></emoji-picker>
                 <button id="emoji-picker-btn"></button>
