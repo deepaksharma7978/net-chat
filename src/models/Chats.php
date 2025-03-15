@@ -7,7 +7,7 @@ class Chats
     {
         $pdo = connect_sql_db();
 
-        $chats_query = $pdo->prepare("SELECT * FROM CHATS WHERE (sender_id = :sender_id AND receiver_id = :receiver_id) OR (sender_id = :receiver_id AND receiver_id = :sender_id)");
+        $chats_query = $pdo->prepare("SELECT * FROM CHATS WHERE (sender_id = :sender_id AND receiver_id = :receiver_id) OR (sender_id = :receiver_id AND receiver_id = :sender_id) ORDER BY id ASC");
         $chats_query->execute(["sender_id" => $sender_id, "receiver_id" => $receiver_id]);
 
         $chats = $chats_query->fetchAll();
