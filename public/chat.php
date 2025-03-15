@@ -55,12 +55,13 @@ $baseUrl = '/assets/';
             <div class="text-message">
                 <emoji-picker id="emoji-picker" class="emoji-picker"></emoji-picker>
                 <button id="emoji-picker-btn"></button>
-                <input type="text" placeholder="Enter text..." class="input-field" >
-                <button class="submit-button">Send</button>
+                <input id="chat-txt" type="text" placeholder="Enter text..." class="input-field" >
+                <button id="chat-send-btn" class="submit-button">Send</button>
             </div>
         </div>
     </div>
     <script src="./scripts/chat.js"></script>
+    <script src="./scripts/socket_handler.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 </body>
 </html>
