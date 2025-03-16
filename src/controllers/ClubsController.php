@@ -10,7 +10,7 @@ class ClubsController
         if (isset($data['admin_id']) && isset($data['club_name']) && isset($data['members'])) {
             $response = Clubs::create_club($data['admin_id'], $data['club_name'], $data['members']);
 
-            if ($response['status'] == 'error') {
+            if (isset($response['status']) && $response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to create club"]);
                 exit();
@@ -35,7 +35,7 @@ class ClubsController
         if ($club_id != null) {
             $response = Clubs::get_chats($club_id);
 
-            if ($response['status'] == 'error') {
+            if (isset($response['status']) && $response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to get chats"]);
                 exit();
