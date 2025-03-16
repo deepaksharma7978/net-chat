@@ -45,7 +45,7 @@ class ChatServer implements MessageComponentInterface
 
         switch ($data['event']) {
             case "send-message":
-                $this->sendMessage($from->resourceId, $data['userId'], $data['receiverId'], $data['message']);
+                $this->sendMessage($from->resourceId, $data['userId'], $data['fullname'], $data['receiverId'], $data['message']);
                 break;
             case "send-club-message":
                 $this->sendGroupMessage($data['senderId'], $data['clubId'], $data['message']);
@@ -66,7 +66,7 @@ class ChatServer implements MessageComponentInterface
         $conn->close();
     }
 
-    private function sendMessage($senderId, $userId, $receiverId, $message)
+    private function sendMessage($senderId, $userId, $fullname, $receiverId, $message)
     {
         // when user is online
         if (isset($this->users[$receiverId])) {
@@ -75,6 +75,7 @@ class ChatServer implements MessageComponentInterface
             $emit_data = [
                 "event" => "receive-message",
                 "sent_by" => $userId,
+                "fullname" => $fullname,
                 "message" => $message,
             ];
 
