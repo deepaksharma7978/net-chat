@@ -9,8 +9,6 @@ header("Content-Type: application/json");
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: *');
 
-// localhost:8000/api/user/login
-
 Router::post('/api/user/login', function () {
     UserController::loginUser();
 });
@@ -41,6 +39,14 @@ Router::post('/api/clubs/create', function () {
 
 Router::get('/api/clubs/chats', function () {
     ClubsController::get_chats();
+});
+
+Router::get('/api/clubs', function() {
+    ClubsController::get_my_clubs();
+});
+
+Router::get('/api/clubs/member', function() {
+    ClubsController::get_club_members();
 });
 
 Router::run();
