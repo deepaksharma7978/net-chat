@@ -10,7 +10,7 @@ class UserController
         if (isset($data['fullname']) && isset($data['email']) && isset($data['password'])) {
             $response = User::register($data['fullname'], $data['email'], $data['password']);
 
-            if ($response['status'] == 'error') {
+            if (isset($response['status']) && $response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to create user"]);
                 exit();

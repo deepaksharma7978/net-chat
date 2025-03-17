@@ -45,10 +45,10 @@ class ChatServer implements MessageComponentInterface
 
         switch ($data['event']) {
             case "send-message":
-                $this->sendMessage($from->resourceId, $data['userId'], $data['receiverId'], $data['message']);
+                $this->sendMessage($from->resourceId, $data['userId'], $data['fullname'], $data['receiverId'], $data['message']);
                 break;
             case "send-club-message":
-                $this->sendGroupMessage($data['senderId'], $data['clubId'], $data['message']);
+                $this->sendGroupMessage($data['senderId'], $data['clubId'], $data['fullname'], $data['message']);
                 break;
             default:
                 echo "Unknown event: {$data['event']}\n";
@@ -66,7 +66,7 @@ class ChatServer implements MessageComponentInterface
         $conn->close();
     }
 
-    private function sendMessage($senderId, $userId, $receiverId, $message)
+    private function sendMessage($senderId, $userId, $fullname, $receiverId, $message)
     {
         // when user is online
         if (isset($this->users[$receiverId])) {
@@ -75,6 +75,7 @@ class ChatServer implements MessageComponentInterface
             $emit_data = [
                 "event" => "receive-message",
                 "sent_by" => $userId,
+                "fullname" => $fullname,
                 "message" => $message,
             ];
 
@@ -86,7 +87,7 @@ class ChatServer implements MessageComponentInterface
         $save_chat_query->execute([$userId, $receiverId, $message]);
     }
 
-    private function sendGroupMessage($senderId, $clubId, $message)
+    private function sendGroupMessage($senderId, $clubId, $fullname, $message)
     {
         $sender = $this->users[$senderId];
 
@@ -112,6 +113,7 @@ class ChatServer implements MessageComponentInterface
                     "event" => "receive-club-message",
                     "sender_id" => $senderId,
                     "club_id" => $clubId,
+                    "fullname" => $fullname,
                     "message" => $message,
                 ]));
             }
@@ -124,6 +126,7 @@ class ChatServer implements MessageComponentInterface
                 "event" => "receive-club-message",
                 "sender_id" => $senderId,
                 "club_id" => $clubId,
+                "fullname" => $fullname,
                 "message" => $message,
             ]));
         }

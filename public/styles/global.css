@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+p {
+    margin-bottom: 0 !important;
+}
+
 :root {
     /* Primary Colors */
     --primary-color: #4A90E2; /* Vibrant Blue */
