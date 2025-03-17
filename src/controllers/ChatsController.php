@@ -15,7 +15,7 @@ class ChatsController
         if ($sender_id != null && $receiver_id != null) {
             $chats_response = Chats::get_chats($sender_id, $receiver_id);
 
-            if ($chats_response['status'] == 'error') {
+            if (isset($chats_response['status']) && $chats_response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to get chats"]);
                 exit();
@@ -42,7 +42,7 @@ class ChatsController
         if ($user_id != null) {
             $chats_response = Chats::get_my_chats($user_id);
 
-            if ($chats_response['status'] == 'error') {
+            if (isset($chats_response['status']) && $chats_response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to get chats"]);
                 exit();

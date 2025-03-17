@@ -10,7 +10,7 @@ class ClubsController
         if (isset($data['admin_id']) && isset($data['club_name']) && isset($data['members'])) {
             $response = Clubs::create_club($data['admin_id'], $data['club_name'], $data['members']);
 
-            if ($response['status'] == 'error') {
+            if (isset($response['status']) && $response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to create club"]);
                 exit();
@@ -35,11 +35,51 @@ class ClubsController
         if ($club_id != null) {
             $response = Clubs::get_chats($club_id);
 
-            if ($response['status'] == 'error') {
+            if (isset($response['status']) && $response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to get chats"]);
                 exit();
             }
+
+            http_response_code(200);
+            echo json_encode(["status" => "success", "data" => $response]);
+            exit();
+        } else {
+            http_response_code(400);
+            echo json_encode(["status" => "error", "message" => "Invalid data"]);
+            exit();
+        }
+    }
+
+    public static function get_my_clubs()
+    {
+        $query_string = $_SERVER['QUERY_STRING'];
+        parse_str($query_string, $query_params);
+
+        $user_id = $query_params['user_id'] ?? null;
+
+        if ($user_id != null) {
+            $response = Clubs::get_my_clubs($user_id);
+
+            http_response_code(200);
+            echo json_encode(["status" => "success", "data" => $response]);
+            exit();
+        } else {
+            http_response_code(400);
+            echo json_encode(["status" => "error", "message" => "Invalid data"]);
+            exit();
+        }
+    }
+
+    public static function get_club_members()
+    {
+        $query_string = $_SERVER['QUERY_STRING'];
+        parse_str($query_string, $query_params);
+
+        $club_id = $query_params['club_id'] ?? null;
+
+        if ($club_id != null) {
+            $response = Clubs::get_club_members($club_id);
 
             http_response_code(200);
             echo json_encode(["status" => "success", "data" => $response]);
