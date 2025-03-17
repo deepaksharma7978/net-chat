@@ -3,6 +3,8 @@ const url = `http://${window.location.host}`;
 
 let currentChatPartnerId = -1;
 
+const userSearchForm = document.getElementById("user-search-form"); 
+
 // redirect to register page when user not logged in
 if (!userObj) {
     window.location.href = "/register.php";
@@ -14,6 +16,22 @@ const emojiPickerBtn = document.getElementById("emoji-picker-btn");
 emojiPickerBtn.addEventListener("click", function () {
     emojiPicker.style.display = "block";
 });
+
+userSearchForm.addEventListener("submit",async function (e) {
+    e.preventDefault();
+    const userName = document.getElementById("user-search-input");
+    console.log("userName", userName.value);
+
+    if(!userName.value){
+        return;
+    }
+    const userSearchRespone = await fetch(`${url}/api/user/search?query=${userName.value}`);
+
+    if(userSearchRespone.ok){
+        const searchUserDataJson = await userSearchRespone.json();
+        console.log(searchUserDataJson);
+    }
+})
 
 async function getMyChats() {
     const chatPageContainer = document.getElementById("chat-container");

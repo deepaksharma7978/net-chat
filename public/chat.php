@@ -16,10 +16,11 @@ $baseUrl = '/assets/';
         <div class="left">
             <img src="./assets/logo-back.jpg" alt="Net-chat Logo">
         </div>
-         <div class="center">
-            <input type="search" class="search-input" placeholder="Search....">
-         </div>
-         <div class="right">
+        <form id="user-search-form" class="center">
+            <input type="search" class="search-input" placeholder="Search...." id="user-search-input">
+        </form>
+        <div id="searchResults"></div>
+        <div class="right">
             <img src="./assets/user.png" alt="User Logo">
         </div>
     </nav>
