@@ -47,28 +47,13 @@ $baseUrl = '/assets/';
             </div>
             <div class="chat-box">
                 <div class="message">
-                    <!-- <div class="sender-site">
-                            <div class="options">
-                                <label for="options"></label>
-                                    <select name="options" id="options">
-                                    <option value="">👍</option>
-                                    <option value="">😂</option>
-                                    <option value="">😊</option>
-                                    <option value="">🤗</option>
-                                </select>
-                                <div class="sender">
-                                    <p>Hi</p>
-                                </div>
-                            </div>
-                                <div class="receiver">
-                                    <p>Hello</p>
-                                </div>
-                            </div> -->
                         </div>
-                    </div>
+                        </div >  
+                        <div class="text">
+                <input type="text" placeholder="Type a message">
+                <button type="button">Send</button>
                 </div>
             </div>
-            <div class="text">
                 
             </div>
         </div>
