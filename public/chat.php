@@ -20,7 +20,7 @@ $baseUrl = '/assets/';
         <div class="left">
             <img src="./assets/logo-back.jpg" alt="Net-chat Logo">
         </div>
-        <div class="center">
+         <div class="center">
             <input type="search" class="search-input" placeholder="Search....">
         </div>
         <div class="right">

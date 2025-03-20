@@ -147,6 +147,22 @@ emojiPickerBtn.addEventListener("click", function () {
     emojiPicker.style.display = "block";
 });
 
+userSearchForm.addEventListener("submit",async function (e) {
+    e.preventDefault();
+    const userName = document.getElementById("user-search-input");
+    console.log("userName", userName.value);
+
+    if(!userName.value){
+        return;
+    }
+    const userSearchRespone = await fetch(`${url}/api/user/search?query=${userName.value}`);
+
+    if(userSearchRespone.ok){
+        const searchUserDataJson = await userSearchRespone.json();
+        console.log(searchUserDataJson);
+    }
+})
+
 async function getMyChats() {
     const chatPageContainer = document.getElementById("chat-container");
     const chatProfilesContainer = document.getElementById("profiles-container");

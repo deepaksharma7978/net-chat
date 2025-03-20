@@ -151,6 +151,8 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgb(196,223,230);
+    background: linear-gradient(90deg, rgba(196,223,230,1) 35%, rgba(102,165,173,1) 100%);
 }
 
 #chats-container {
