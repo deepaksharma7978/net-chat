@@ -5,6 +5,8 @@ let currentChatPartnerId = -1;
 let currentGroupId = -1;
 let currentChatTab = 0;
 
+let createGroupMemberList = [];
+
 // redirect to register page when user not logged in
 if (!userObj) {
     window.location.href = "/register.php";
@@ -15,6 +17,10 @@ const logoutBtn = document.getElementById("logout-btn");
 const chatsTabBtn = document.getElementById("chats-tab");
 const groupsTabBtn = document.getElementById("groups-tab");
 const chatsProfileContainer = document.getElementById("profiles-container");
+const createGroupSearchUserInput = document.getElementById("search-user-input-group-create");
+const createGroupSearchUserBtn = document.getElementById("search-user-btn-group-create");
+const createGroupBtn = document.getElementById("create-group-btn");
+const createGroupCloseBtn = document.getElementById("create-group-close-btn");
 
 menuUsername.textContent = userObj['fullname'];
 
@@ -51,6 +57,88 @@ groupsTabBtn.addEventListener("click", function () {
 
     getMyGroups();
 });
+
+createGroupSearchUserBtn.addEventListener("click", async function () {
+    const userSearchInput = createGroupSearchUserInput.value;
+
+    if (!userSearchInput) {
+        return;
+    }
+
+    const userSearchResult = document.getElementById("create-group-results");
+    userSearchResult.innerHTML = '';
+
+    const searchResponse = await fetch(`${url}/api/user/search?query=${userSearchInput}`);
+
+    if (searchResponse.ok) {
+        const searchDataJson = await searchResponse.json();
+        const searchData = searchDataJson.data;
+
+        searchData.forEach(searchResult => {
+            userSearchResult.insertAdjacentHTML("beforeend", `
+                <div id="user-result-${searchResult['id']}" class="create-group-result">
+                    <img src="./assets/profile.png" height="25px" width="25px">
+                    <p>${searchResult['fullname']}</p>
+                </div>
+            `);
+
+            document.getElementById(`user-result-${searchResult['id']}`).addEventListener("click", function () {
+                const userAlreadyAdded = createGroupMemberList.find(userId => userId === searchResult['id']);
+
+                if (userAlreadyAdded) {
+                    createGroupMemberList = createGroupMemberList.filter(id => id !== searchResult['id']);
+                    this.style.backgroundColor = '#F7F9FC';
+                } else {
+                    createGroupMemberList.push(searchResult['id']);
+                    this.style.backgroundColor = '#E3F2FD';
+                }
+                console.log(createGroupMemberList);
+            });
+        });
+    }
+});
+
+createGroupBtn.addEventListener("click", async function () {
+    const groupName = document.getElementById("input-group-name-create");
+
+    if (!groupName.value) {
+        return;
+    }
+
+    if (!createGroupMemberList.length) {
+        return;
+    }
+
+    createGroupMemberList.push(userObj['id']);
+
+    const createGroupResponse = await fetch(`${url}/api/clubs/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            admin_id: userObj['id'],
+            club_name: groupName.value,
+            members: createGroupMemberList,
+        }),
+    });
+
+    if (createGroupResponse.ok) {
+        const createGroupJson = await createGroupResponse.json();
+        console.log(createGroupJson);
+    }
+});
+
+createGroupCloseBtn.addEventListener("click", function () {
+    // reset on modal close
+
+    const userSearchResult = document.getElementById("create-group-results");
+
+    createGroupMemberList = [];
+    createGroupSearchUserInput.value = '';
+
+    userSearchResult.innerHTML = '';    
+})
 
 const emojiPicker = document.getElementById("emoji-picker");
 const emojiPickerBtn = document.getElementById("emoji-picker-btn");

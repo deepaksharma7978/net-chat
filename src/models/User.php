@@ -99,7 +99,7 @@ class User
         $pdo = connect_sql_db();
         
         try {
-            $search_user_query = $pdo->prepare("SELECT id, fullname, email FROM USERS WHERE fullname = :query OR email = :query");
+            $search_user_query = $pdo->prepare("SELECT id, fullname, email FROM USERS WHERE fullname LIKE CONCAT('%', :query, '%') OR email LIKE CONCAT('%', :query, '%')");
             $search_user_query->execute(["query" => $query]);
 
             $users = $search_user_query->fetchAll();

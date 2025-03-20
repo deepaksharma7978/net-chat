@@ -35,14 +35,22 @@ $baseUrl = '/assets/';
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" id="create-group-close-btn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <div class="create-group-body">
+                                <input id="input-group-name-create" placeholder="Group name">
+                                <div class="create-group-user-search">
+                                    <input id="search-user-input-group-create" placeholder="Search user by name or email">
+                                    <button id="search-user-btn-group-create">Search</button>
+                                </div>
+                                <div id="create-group-results" class="create-group-results">
+                                    <!-- display search profiles -->
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
+                            <button type="button" class="btn btn-primary" id="create-group-btn">Create Group</button>
                         </div>
                     </div>
                 </div>
