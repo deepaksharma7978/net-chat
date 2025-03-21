@@ -10,7 +10,7 @@ class UserController
         if (isset($data['fullname']) && isset($data['email']) && isset($data['password'])) {
             $response = User::register($data['fullname'], $data['email'], $data['password']);
 
-            if ($response['status'] == 'error') {
+            if (isset($response['status']) && $response['status'] == 'error') {
                 http_response_code(500);
                 echo json_encode(["status" => "error", "message" => "Failed to create user"]);
                 exit();
@@ -52,6 +52,26 @@ class UserController
 
             http_response_code(200);
             echo json_encode(["status" => "success", "data" => $response]);
+            exit();
+        } else {
+            http_response_code(400);
+            echo json_encode(["status" => "error", "message" => "Invalid data"]);
+            exit();
+        }
+    }
+
+    public static function searchUser() {
+        $query_string = $_SERVER['QUERY_STRING']; // Get raw query string
+        parse_str($query_string, $query_params); // Convert to associative array
+
+        // Access query parameters
+        $query = $query_params['query'] ?? null;
+
+        if ($query != null) {
+            $users = User::search_user($query);
+
+            http_response_code(200);
+            echo json_encode(["status" => "success", "data" => $users]);
             exit();
         } else {
             http_response_code(400);
