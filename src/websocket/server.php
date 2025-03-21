@@ -119,18 +119,6 @@ class ChatServer implements MessageComponentInterface
             }
         }
 
-        // send message to admin as well
-        if (isset($this->users[$club['admin_id']]) && $member != $senderId) {
-            $admin = $this->users[$club['admin_id']];
-            $admin->send(json_encode([
-                "event" => "receive-club-message",
-                "sender_id" => $senderId,
-                "club_id" => $clubId,
-                "fullname" => $fullname,
-                "message" => $message,
-            ]));
-        }
-
         // save chats
         $save_chat_query = $this->pdo->prepare("INSERT INTO CLUB_CHATS (club_id, sender_id, message) VALUES (?, ?, ?)");
         $save_chat_query->execute([$clubId, $senderId, $message]);

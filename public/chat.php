@@ -15,16 +15,58 @@ $baseUrl = '/assets/';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>
+<body onload="getMyChats()">
     <nav>
         <div class="left">
             <img src="./assets/logo-back.jpg" alt="Net-chat Logo">
         </div>
          <div class="center">
             <input type="search" class="search-input" placeholder="Search....">
-         </div>
-         <div class="right">
-            <img src="./assets/user.png" alt="User Logo">
+        </div>
+        <div class="right">
+            <!-- Button trigger modal -->
+            <button type="button" id="add-grp-btn" class="btn btn-light chat-tab" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Create Group
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                            <button type="button" id="create-group-close-btn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="create-group-body">
+                                <input id="input-group-name-create" placeholder="Group name">
+                                <div class="create-group-user-search">
+                                    <input id="search-user-input-group-create" placeholder="Search user by name or email">
+                                    <button id="search-user-btn-group-create">Search</button>
+                                </div>
+                                <div id="create-group-results" class="create-group-results">
+                                    <!-- display search profiles -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="create-group-btn">Create Group</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="./assets/user.png" alt="User Logo" height="40px" width="40px">
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" id="menu-username">Username</li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="dropdown-item" id="logout-btn">Log out</li>
+                </ul>
+            </div>
         </div>
     </nav>
 

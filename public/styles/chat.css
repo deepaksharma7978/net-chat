@@ -110,7 +110,7 @@ nav{
 }
 
 .chat-tab-active {
-    background-color: red;
+    background-color: #D3D3D3;
 }
 
 #chats-tab {
@@ -245,6 +245,50 @@ nav{
 
 .submit-button:hover{
     background-color: brown;
+}
+
+.group-chat {
+    display: flex;
+    flex-direction: column;
+}
+
+.sender-name {
+    font-size: 12px;
+}
+
+.create-group-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+.create-group-body input {
+    width: 100%;
+}
+
+.create-group-user-search {
+    display: flex;
+    gap: 8px;
+}
+
+.create-group-results {
+    display: flex;
+    flex-direction: column;
+    max-height: 275px;
+    overflow-y: auto;
+    gap: 5px;
+}
+
+.create-group-result {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    padding: 5px;
+    background-color: var(--card-background);
+    border-radius: 9px;
+    gap: 5px;
+    cursor: pointer;
 }
 
 /* 
